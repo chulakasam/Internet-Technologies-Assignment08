@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assignment-08</title>
+
+  <style>
+    body{
+      text-align: center;
+      align-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+    .box-container{
+      display: grid;
+      grid-template-columns: repeat(7,1fr);
+      position: relative;
+
+    }
+    .box{
+      position: relative;
+      display: flex;
+      font-size: 30px;
+      height: 120px;
+      width: 175px;
+    }
+    .box h1{
+      position: absolute;
+      right: 30px;
+      top: 0;
+    }
+    hr{
+      margin: 0;
+    }
+    button{
+      width: 100px;
+      height: 50px;
+      font-size: 20px;
+      color: white;
+      margin: 10px;
+    }
+    #btnStart{
+      background-color: crimson;
+    }
+    #btnStop{
+      background-color: violet;
+    }
+  </style>
+</head>
+<body>
+<section>
+  <div class="box-container">
+    <div class="box">
+      <img src="Assests/83520a8b627798857bdf91e8662904ac.gif" alt="men" >
+      <h1 id="val1">A</h1>
+    </div>
+    <div class="box">
+      <img src="Assests/83520a8b627798857bdf91e8662904ac.gif" alt="men" >
+      <h1 id="val2">B</h1>
+    </div>
+    <div class="box">
+      <img src="Assests/83520a8b627798857bdf91e8662904ac.gif" alt="men" >
+      <h1 id="val3">C</h1>
+    </div>
+    <div class="box">
+      <img src="Assests/83520a8b627798857bdf91e8662904ac.gif" alt="men" >
+      <h1 id="val4">D</h1>
+    </div>
+    <div class="box">
+      <img src="Assests/83520a8b627798857bdf91e8662904ac.gif" alt="men" >
+      <h1 id="val5">E</h1>
+    </div>
+    <div class="box">
+      <img src="Assests/83520a8b627798857bdf91e8662904ac.gif" alt="men" >
+      <h1 id="val6">F</h1>
+    </div>
+    <div class="box">
+      <img src="Assests/download.png" alt="home" style="width: 130px; height: 130px" >
+    </div>
+  </div>
+  <hr>
+</section>
+<section id="btn">
+  <button type="button" id="btnStart">Start</button>
+  <button type="button" id="btnStop">Stop</button>
+</section>
+
+<script src="Assests/lib/jquery-3.7.1.min.js"></script>
+<script>
+  var array = ["A", "B", "C", "D", "E", "F"];
+  var myInterval = null;
+
+  function removeElement() {
+    let last = array.pop();
+    array.unshift(last)
+    $("#val1").text(array[0])
+    $("#val2").text(array[1])
+    $("#val3").text(array[2])
+    $("#val4").text(array[3])
+    $("#val5").text(array[4])
+    $("#val6").text(array[5])
+  }
+
+  $("#btnStart").on("click", () => {
+    myInterval = setInterval(removeElement, 500);
+  });
+
+  $("#btnStop").on("click", () => {
+    myInterval = clearInterval(myInterval);
+  });
+</script>
+
+</body>
+</html>
