@@ -2,9 +2,106 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Assignment-08</title>
+    <style>
+        body{
+            text-align: center;
+            align-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            background-color: black;
+        }
+        section{
+            position: relative;
+            width: 570px;
+            margin: auto;
+            top: 200px;
+        }
+        .box-container{
+            display: grid;
+            grid-template-columns: repeat(8,1fr);
+            gap: 10px;
+            padding: 10px 20px;
+        }
+        .box{
+            display: flex;
+            padding: 20px;
+            font-size: 20px;
+            background-color: white;
+            width: 60px;
+            height:20px;
+        }
+        #val7,#val8{
+            background-color: black;
+        }
+        #val6{
+            position: absolute;
+            right: 0;
+        }
+        button{
+            width: 100px;
+            height: 50px;
+            font-size: 20px;
+            color: #ffffff;
+            margin-top: 100px;
+        }
+        #btnStart{
+            background-color: #1fc1ef;
+        }
+        #btnStop{
+            background-color: #ff99cc;
+        }
+    </style>
 </head>
 <body>
+<section>
+    <div class="box" id="val1"></div>
+    <hr>
+    <div class="box-container">
+        <div class="box" id="val7"></div>
+        <div class="box" id="val2"></div>
+        <div class="box" id="val3"></div>
+        <div class="box" id="val4"></div>
+        <div class="box" id="val5"></div>
+        <div class="box" id="val8"></div>
+    </div>
+    <hr>
+    <div class="box" id="val6"></div>
+</section>
+<section id="btn">
+    <button type="button" id="btnStart">Start</button>
+    <button type="button" id="btnStop">Stop</button>
+</section>
 
+<script src="Assests/lib/jquery-3.7.1.min.js"></script>
+<script>
+    var array = ["#feca57", "#ee5253", "#ff9ff3", "#48dbfb", "#fab1a0", "#1dd1a1"];
+    var myInterval = null;
+
+
+
+    function addColors() {
+        let last = array.pop();
+        array.unshift(last)
+        console.log(array)
+        $("#val1").css("background-color",array[0])
+        $("#val2").css("background-color",array[1])
+        $("#val3").css("background-color",array[2])
+        $("#val4").css("background-color",array[3])
+        $("#val5").css("background-color",array[4])
+        $("#val6").css("background-color",array[5])
+    }
+
+    $("#btnStart").on("click", () => {
+        myInterval = setInterval(addColors, 500);
+
+    });
+
+    $("#btnStop").on("click", () => {
+        myInterval = clearInterval(myInterval);
+
+    });
+</script>
 </body>
 </html>
